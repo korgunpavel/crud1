@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Человек</title>
+</head>
+<body>
+<a th:utext="${person.getName()}">VALUE</a>
+<a th:utext="${person.getId()}">VALUE</a>
+<br/>
+<a th:href="@{/people/{id}/edit(id=${person.getId()})}">Edit</a>
+ <form th:method="DELETE" th:action="@{/people/{id}(id=${person.getId()})}">
+     <input type="submit" value="Delete"/>
+ </form>
+
+</body>
+</html>
