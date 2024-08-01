@@ -1,6 +1,7 @@
 package com.korgun.springcourse.controllers;
 
 import com.korgun.springcourse.model.Person;
+import com.korgun.springcourse.services.ItemsService;
 import com.korgun.springcourse.services.PeopleService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,15 +15,23 @@ import org.springframework.web.bind.annotation.*;
 public class PeopleController {
 
     private final PeopleService peopleService;
+    private final ItemsService itemsService;
 
     @Autowired
-    public PeopleController(PeopleService peopleService) {
+    public PeopleController(PeopleService peopleService, ItemsService itemsService) {
         this.peopleService = peopleService;
+        this.itemsService = itemsService;
     }
 
     @GetMapping
     public String index(Model model){
         model.addAttribute("people",peopleService.findAll());
+
+        itemsService.findByItemName("Airpods");
+        itemsService.findByOwner(peopleService.findAll().get(0));
+
+        peopleService.test();
+
         return "people/index";
     }
     @GetMapping("{id}")
