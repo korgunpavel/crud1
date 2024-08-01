@@ -18,10 +18,6 @@
     <input th:type="text" th:field="*{email}" id="email"/>
     <div style="color: red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">email error</div>
     <br/>
-    <label for="address">Enter address</label>
-    <input th:type="text" th:field="*{address}" id="address"/>
-    <div style="color: red" th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Address error</div>
-    <br/>
     <label>
         <input th:type="submit" value="Update!">
     </label>
