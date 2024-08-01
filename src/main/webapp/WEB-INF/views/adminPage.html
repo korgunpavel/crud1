@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>AdminPage</title>
+</head>
+<body>
+<form th:method="PATCH" th:action="@{/admin/add}">
+    <label for="person">Chose person:</label>
+    <select th:object="${person}" th:field="*{id}" id="person">
+        <option th:each="person : ${people}" th:value="${person.getId()}" th:utext="${person.getName()}"></option>
+    </select>
+
+    <input type="submit" value="Make admin">
+</form>
+</body>
+</html>
