@@ -26,12 +26,6 @@ public class PeopleController {
     @GetMapping
     public String index(Model model){
         model.addAttribute("people",peopleService.findAll());
-
-        itemsService.findByItemName("Airpods");
-        itemsService.findByOwner(peopleService.findAll().get(0));
-
-        peopleService.test();
-
         return "people/index";
     }
     @GetMapping("{id}")

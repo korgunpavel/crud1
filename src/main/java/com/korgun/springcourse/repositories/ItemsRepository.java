@@ -13,4 +13,5 @@ public interface ItemsRepository extends JpaRepository<Item, Integer> {
     List<Item> findByItemName(String itemName);
 
     List<Item> findByOwner(Person owner);
+
 }

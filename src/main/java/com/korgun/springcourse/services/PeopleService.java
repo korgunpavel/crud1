@@ -1,11 +1,13 @@
 package com.korgun.springcourse.services;
 
+import com.korgun.springcourse.model.Mood;
 import com.korgun.springcourse.model.Person;
 import com.korgun.springcourse.repositories.PeopleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,6 +33,8 @@ public class PeopleService {
 
     @Transactional
     public void save(Person person){
+        person.setCreatedAt(new Date());
+        person.setMood(Mood.SAD);
         peopleRepository.save(person);
     }
 
@@ -45,7 +49,4 @@ public class PeopleService {
         peopleRepository.deleteById(id);
     }
 
-    public void test(){
-        System.out.println("Testing debug");
-    }
 }
